@@ -1,0 +1,36 @@
+<header class="header">
+  <div class="container">
+    <h1 class="text-center" [routerLink]="['/']">Sales Diego</h1>
+  </div>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+      <div class="row">
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target=".navbar-collapse"
+                aria-label="Toggle navigation"
+                [attr.aria-expanded]="isExpanded"
+                (click)="toggle()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>      
+
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center"
+           [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngFor="let menuItem of navMenuItems">
+            <a class="nav-link test-dark" [routerLink]="menuItem.url">{{menuItem.name}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="getUser2()">
+        <a (click)="logout()">Logout</a>
+      </div>
+      <div *ngIf="!getUser2()">
+        <a (click)="login()">Login</a>
+      </div>
+    </div>
+  </nav>
+</header>

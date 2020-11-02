@@ -1,0 +1,32 @@
+<div class="col-md-6 container">
+    <h2 class="text-center">NUEVO PRODUCTO</h2>
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nameProduct">Nombre:</label>
+        <input type="text" formControlName="nameProduct" placeholder="Nombre" name="nameProduct" class="form-control" id="nameProduct">
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <input type="text" formControlName="description" placeholder="Descripción" name="description" class="form-control" id="description">
+      </div>
+  
+      <div class="form-group">
+        <label for="nameCategory">Categoría:</label>
+        <input type="text" formControlName="nameCategory" placeholder="Categoría" name="nameCategory" class="form-control" id="nameCategory">
+      </div>
+  
+      <div class="form-group">
+        <label for="price">Precio S/:</label>
+        <input type="text" formControlName="price" placeholder="Precio" name="price" class="form-control" id="price">
+      </div>
+
+      <div class="form-group">
+        <label>Imagen Principal:</label><br>
+        <input type="file" accept="image/*" (change)="selectImage($event)" name="imageFile" id="imageFile" />
+        <img class="img-responsive" width="300px" [src]="mainImageUrl" *ngIf="mainImageUrl"/>
+      </div>
+  
+      <button class="btn btn-success">Guardar</button>
+    </form>
+  </div>

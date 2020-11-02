@@ -1,0 +1,29 @@
+<h2 class="text-center">LISTADO DE PRODUCTOS</h2>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <button class="btn btn-info" (click)=createProduct()>Agregar</button>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Precio S/</th>
+                <th>Categoría</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor='let product of listProducts'>
+                    <td>{{product.productName}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.categoryProductName}}</td>
+                    <td>
+                        <button class="btn btn-success" (click)=updateProduct(product)>Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

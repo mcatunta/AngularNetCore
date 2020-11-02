@@ -1,0 +1,55 @@
+<div class="col-md-6 container">
+    <h2 class="text-center">ACTUALIZAR PRODUCTO</h2>
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+      <div class="d-none">
+        <input type="text" formControlName="idProduct" name="idProduct" class="form-control" id="idProduct">
+        <input type="text" formControlName="idCategoryProduct" name="idCategoryProduct" class="form-control" 
+            id="idCategoryProduct">
+        <input type="text" formControlName="image" name="image" class="form-control" id="image">
+        <input type="text" formControlName="images" name="images" class="form-control" id="images">
+      </div>
+      <div class="form-group">
+        <label for="productName">Nombre:</label>
+        <input type="text" formControlName="productName" placeholder="Nombre" name="productName" class="form-control" id="productName">
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <input type="text" formControlName="description" placeholder="Descripción" name="description" class="form-control" id="description">
+      </div>
+  
+      <div class="form-group">
+        <label for="categoryProductName">Categoría:</label>
+        <input type="text" formControlName="categoryProductName" placeholder="Categoría" name="categoryProductName" class="form-control" id="categoryProductName">
+      </div>
+  
+      <div class="form-group">
+        <label for="price">Precio S/:</label>
+        <input type="text" formControlName="price" placeholder="Precio" name="price" class="form-control" id="price">
+      </div>
+
+      <div class="form-group">
+          <label>Imagen Principal:</label><br>
+          <input type="file" accept="image/*" (change)="selectImage($event)" name="imageFile" id="imageFile" />
+          <img class="img-responsive" width="300px" [src]="mainImageUrl || '../../images/'+oldImageUrl+'.jpg?time='+date"/>
+      </div>
+  
+      <button class="btn btn-success">Actualizar</button>
+    </form>
+  </div>
+
+<div class="col-md-6 container">
+    <div class="form-group">
+        <label>Elegir Imagen Secundaria:</label>
+        <input type="file" accept="image/*" (change)="selectSecundaryImage($event)" name="imageSecundaryFile" id="imageSecundaryFile" />
+        <img class="img-responsive" width="300px" [src]="secundaryImageUrl" *ngIf="secundaryImageUrl"/>        
+    </div>
+    <button class="btn btn-success" (click)=saveSecundaryImage()>Agregar Imagen</button>
+</div>
+
+<div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let image of listImages">
+        <img class="img-responsive" width="300px" [src]="'../../images/'+image+'.jpg'"/>
+        <button class="btn btn-danger text-center" (click)=deleteSecundaryImage(image)>Borrar Imagen</button>
+    </div>
+</div>
